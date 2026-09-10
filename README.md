@@ -1,3 +1,3 @@
-# This is my Namaste-React git repo doc file
+# This is my Get-Food-App git repo doc file
 
 ## Author: dbugger01
