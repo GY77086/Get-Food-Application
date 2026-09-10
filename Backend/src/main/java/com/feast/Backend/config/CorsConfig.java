@@ -1,31 +1,30 @@
 package com.feast.Backend.config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.List;
-
 /**
  * Global CORS configuration.
- * Allows the React frontend dev server to call this backend without CORS errors.
+ * Allows local and production frontends (Netlify/Vercel) to call this backend.
  */
 @Configuration
-public class CorsConfig {
+public class CorsConfig 
+{
 
     @Bean
-    public CorsFilter corsFilter() {
+    public CorsFilter corsFilter() 
+    {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of(
-                "http://localhost:1234",
-                "http://localhost:3000",
-                "http://localhost:5173"
-        ));
+        // Wildcard pattern allows all origins (Netlify, Vercel, Localhost) while supporting credentials
+        config.setAllowedOriginPatterns(List.of("*"));
 
-        config.setAllowedMethods(List.of("GET", "POST", "OPTIONS"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
