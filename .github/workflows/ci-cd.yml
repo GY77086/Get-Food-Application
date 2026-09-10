@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  # 1. Frontend CI (React + Node.js)
+  # 1. Frontend CI
   frontend-ci:
     runs-on: ubuntu-latest
     defaults:
@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/coordinator@v4
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
@@ -31,7 +31,7 @@ jobs:
       - name: Build Frontend
         run: npm run build
 
-  # 2. Backend CI (Java + Spring Boot + Maven)
+  # 2. Backend CI
   backend-ci:
     runs-on: ubuntu-latest
     defaults:
@@ -42,12 +42,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup JDK 17
+      - name: Setup JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
+
+      - name: Make Maven Wrapper Executable
+        run: chmod +x mvnw
 
       - name: Build Backend with Maven
         run: ./mvnw clean package -DskipTests
