@@ -5,7 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus.js";
 import userContext from "../utils/userContext.js";
 
 const CDN_BASE = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://get-food-application.onrender.com";
 
 export const RestaurantCard = ({ restData }) => {
     const {

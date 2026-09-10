@@ -6,7 +6,7 @@ import RestaurantCategory from "./RestaurantCategory.js";
 import { useState } from "react";
 import { createRestaurantMenuFallback } from "../utils/restaurantMenuFallback.js";
 
-const BACKEND_URL = "http://localhost:8080";
+const BACKEND_URL = "https://get-food-application.onrender.com";
 
 const toItemCard = (item) => ({
     card: {

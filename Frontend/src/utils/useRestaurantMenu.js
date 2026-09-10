@@ -1,44 +1,50 @@
 import { useState, useEffect } from "react";
 
-const useRestaurantMenu = (resId) => {
-  const [resInfo, setResInfo] = useState(null);
+const BACKEND_URL = "https://get-food-application.onrender.com";
 
-  useEffect(() => {
-    if (!resId) return;
+const useRestaurantMenu = (resId) => 
+{
+    const [resInfo, setResInfo] = useState(null);
 
-    const controller = new AbortController();
-    setResInfo(null);
+    useEffect(() => 
+    {
+        if (!resId) return;
 
-    const fetchMenu = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/api/menu?restaurantId=${encodeURIComponent(resId)}`,
-          { signal: controller.signal, credentials: "include" }
-        );
+        const controller = new AbortController();
+        setResInfo(null);
 
-        const contentType = response.headers.get("content-type") || "";
-        const menu = contentType.includes("application/json") ? await response.json() : {};
-        if (response.ok && !menu?.error && (Array.isArray(menu?.categories) || Array.isArray(menu?.data?.cards))) {
-          setResInfo(menu);
-          return;
-        }
+        const fetchMenu = async () => 
+        {
+            try 
+            {
+                const response = await fetch(
+                    `${BACKEND_URL}/api/menu?restaurantId=${encodeURIComponent(resId)}`,
+                    { signal: controller.signal, credentials: "include" }
+                );
 
-        // Return error marker so RestaurantsMenu.js can use location.state.restaurant
-        // (the real clicked restaurant data) to build the fallback with correct name/cuisine
-        setResInfo({ error: true });
-      } catch (error) {
-        if (error.name !== "AbortError") {
-          // Same — let RestaurantsMenu handle fallback with real restaurant info
-          setResInfo({ error: true });
-        }
-      }
-    };
+                const contentType = response.headers.get("content-type") || "";
+                const menu = contentType.includes("application/json") ? await response.json() : {};
+                if (response.ok && !menu?.error && (Array.isArray(menu?.categories) || Array.isArray(menu?.data?.cards)))
+                {
+                    setResInfo(menu);
+                    return;
+                }
 
-    fetchMenu();
-    return () => controller.abort();
-  }, [resId]);
+                setResInfo({ error: true });
+            } 
+            catch (error) 
+            {
+                if (error.name !== "AbortError") 
+                {
+                    setResInfo({ error: true });
+                }
+            }
+        };
 
-  return resInfo;
+        fetchMenu();
+        return () => controller.abort();
+    }, [resId]);
+    return resInfo;
 };
 
 export default useRestaurantMenu;
