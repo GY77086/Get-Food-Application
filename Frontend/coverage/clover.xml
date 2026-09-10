@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1788937546413" clover="3.2.0">
+  <project timestamp="1788937546413" name="All files">
+    <metrics statements="19" coveredstatements="10" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="3" elements="36" coveredelements="20" complexity="0" loc="19" ncloc="19" packages="1" files="2" classes="2"/>
+    <file name="ContactUs.js" path="C:\Users\gy659\OneDrive\Desktop\CODING\Namaste Dev\Get-Food-App\Frontend\src\components\ContactUs.js">
+      <metrics statements="17" coveredstatements="8" conditionals="8" coveredconditionals="7" methods="8" coveredmethods="2"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="4" type="stmt"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="13" count="4" type="stmt"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="18" count="4" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="23" count="0" type="stmt"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="29" count="4" type="stmt"/>
+      <line num="123" count="16" type="stmt"/>
+      <line num="124" count="16" type="stmt"/>
+      <line num="128" count="0" type="stmt"/>
+    </file>
+    <file name="sum.js" path="C:\Users\gy659\OneDrive\Desktop\CODING\Namaste Dev\Get-Food-App\Frontend\src\components\sum.js">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
